@@ -1,0 +1,32 @@
+{
+  "name": "acme-user-offices",
+  "version": "1.0.0",
+  "description": "npm install",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.4",
+    "jquery": "^3.2.1",
+    "nunjucks": "^3.0.1",
+    "path": "^0.12.7",
+    "pg": "^7.2.0",
+    "sequelize": "^4.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:dev": "DATABASE_URL=postgres://localhost/acme_user_offices nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriela229/acme-user-offices.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabriela229/acme-user-offices/issues"
+  },
+  "homepage": "https://github.com/gabriela229/acme-user-offices#readme"
+}
