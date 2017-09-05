@@ -16,7 +16,12 @@ router.delete('/:id', function(req, res, next){
 })
 
 router.put('/:id', function(req, res, next){
-
+  db.models.User.findById(req.params.id)
+    .then( user => {
+      user.update({
+        officeId: req.body.officeId
+      });
+    })
 })
 
 router.post('/', function(req, res, next){

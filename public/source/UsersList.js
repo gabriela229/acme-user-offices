@@ -1,34 +1,26 @@
 function UsersList(userArr){
   var container = $('#user-list');
+  container.empty();
   var html = [];
-  var options = [];
-  $.get('/offices')
-    .then( offices => {
-      offices.forEach(function(office){
-        options.push(
-          `<option value="">${office.name}</option>`
-        );
-      })
-    })
-   .then( () => {
-      userArr.forEach(function(user){
-        html.push(`
-        <li class='list-group-item'>
-        ${user.name}
-        <form class='form-group' action="">
-        <select class ='form-control' name="" id="">
-          ${options.join('')}
-        </select>
-        </form>
-        <form class='form-group' action="">
-        <button class='btn btn-warning'>remove</button>
-        </form>
-        </li>
+  userArr.forEach(function(user){
+    html.push(`
+    <li class='list-group-item'>
+    ${user.name}
+    <div class='form-group'>
+    <select class ='form-control' data-user-id=${user.id} name="" id="">
+    <option value="">-- none--</option>
+      ${user.options}
+    </select>
+    </div>
+    <div class='form-group'>
+    <button class='btn btn-warning'>remove</button>
+    </div>
+    </li>
 
-        `);
-      })
+    `);
+
   })
-  .then( () => {
+
     var $html = `
       <ul class='list-group'>
       ${html.join('')}
@@ -36,6 +28,6 @@ function UsersList(userArr){
       `;
       container.append($html);
 
-  })
+
 
 }
