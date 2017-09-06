@@ -16,7 +16,7 @@ function OfficesList(officeArr){
   .then(() => {
       var html = officeArr.reduce(function(memo, office){
           memo += `
-            <li class='list-group-item'>
+            <li class='list-group-item' data-office-id=${office.id}>
               ${office.name}
               <br>
               <em>${office.lat}</em>

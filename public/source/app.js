@@ -158,4 +158,20 @@ $(function(){
     .find('select')
     .attr('data-user-id'));
   })
+
+  function deleteOffice(id){
+    $.ajax({
+      url: `/offices/${id}`,
+      type: 'DELETE'
+    })
+    .then( () => {
+      renderOfficeOptions();
+      renderOffices();
+    })
+  }
+
+  $('#office-list').on('click', 'button', function(){
+    deleteOffice($(this).parent().parent()
+    .attr('data-office-id'));
+  })
 });

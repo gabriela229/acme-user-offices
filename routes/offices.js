@@ -11,7 +11,11 @@ router.get('/', function(req, res, next){
 })
 
 router.delete('/:id', function(req, res, next){
-
+  db.models.Office.findById(req.params.id)
+  .then( (office) => {
+    office.destroy();
+    res.send(office)
+  })
 })
 
 router.post('/', function(req, res, next){

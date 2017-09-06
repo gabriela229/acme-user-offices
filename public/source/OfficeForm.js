@@ -15,7 +15,7 @@ function OfficeForm(office){
   })
   .then( () => {
   var html = `
-      <li class='list-group-item'>
+      <li class='list-group-item' data-office-id=${office.id}>
         ${office.name}
         <br>
         <em>${office.lat}</em>
@@ -24,9 +24,9 @@ function OfficeForm(office){
         <br>
         <p></p>
         <label class='label label-default'>${count[office.id] || 0} User</label>
-        <form class='form-group' action="">
+        <div class='form-group' action="">
             <button class='btn btn-warning pull-right'>delete</button>
-        </form>
+        </div>
         <br clear='all'>
       </li>
 
