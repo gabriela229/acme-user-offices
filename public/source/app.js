@@ -141,4 +141,21 @@ $(function(){
     updateUser($(this).attr('data-user-id'));
   })
 
+
+  function deleteUser(id){
+    $.ajax({
+      url: `/users/${id}`,
+      type: 'DELETE'
+    })
+    .then( () => {
+      renderUsers();
+      renderOffices()
+    })
+  }
+
+  $('#user-list').on('click', 'button', function(){
+    deleteUser($(this).parent().siblings()
+    .find('select')
+    .attr('data-user-id'));
+  })
 });

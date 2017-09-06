@@ -12,11 +12,14 @@ router.get('/', function(req, res, next){
 });
 
 router.delete('/:id', function(req, res, next){
-
+  db.models.User.findById(req.params.id)
+  .then( (user) => {
+    user.destroy();
+    res.send(user)
+  })
 })
 
 router.put('/:id', function(req, res, next){
-  console.log(req.body);
   db.models.User.findById(req.params.id)
     .then( user => {
       user.update({
