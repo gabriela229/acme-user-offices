@@ -2,12 +2,14 @@ function OfficeForm(office){
   $('#address-form').val('');
   var container = $('#office-list').find('ul');
 
-  var count = 0;
+  var count = {};
   $.get('/users')
   .then( users => {
     users.forEach(function(user){
-      if (user.officeId === office.id){
-        count++;
+      if (count[user.officeId]){
+        count[user.officeId]++;
+      } else {
+      count[user.officeId] = 1
       }
     })
   })
@@ -21,7 +23,7 @@ function OfficeForm(office){
         <em>${office.lng}</em>
         <br>
         <p></p>
-        <label class='label label-default'>${count} User</label>
+        <label class='label label-default'>${count[office.id] || 0} User</label>
         <form class='form-group' action="">
             <button class='btn btn-warning pull-right'>delete</button>
         </form>

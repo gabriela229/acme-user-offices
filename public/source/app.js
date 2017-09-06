@@ -124,10 +124,10 @@ $(function(){
   })
 
   function updateUser(id){
-    var officeId = $('#user-list').find('select :selected').val()
+    var officeId = $(`select[data-user-id='${id}']`).find('option:selected').val();
     $.ajax({
       url: `/users/${id}`,
-      type: 'PUT',
+      method: 'PUT',
       data: {officeId: officeId}
     })
     .then( () => {
@@ -137,8 +137,8 @@ $(function(){
   }
 
   $('#user-list').on('change', 'select', function(){
-    //this is getting office id instead of user id
-    updateUser( $(this).attr('data-user-id'));
+
+    updateUser($(this).attr('data-user-id'));
   })
 
 });
